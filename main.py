@@ -117,7 +117,7 @@ MVSDataset = find_dataset_def(cfg.DATASET)
 train_dataset = MVSDataset(cfg.TRAIN.PATH, "train", transforms, cfg.TRAIN.N_VIEWS, len(cfg.MODEL.THRESHOLDS) - 1)
 test_dataset = MVSDataset(cfg.TEST.PATH, "test", transforms, cfg.TEST.N_VIEWS, len(cfg.MODEL.THRESHOLDS) - 1)
 
-if cfg.DISTRIBUTED:
+if cfg.DISTRIBUTED:   #分布式计算
     train_sampler = DistributedSampler(train_dataset, shuffle=False)
     TrainImgLoader = torch.utils.data.DataLoader(
         train_dataset,
