@@ -33,18 +33,23 @@ class NeuralRecon(nn.Module):
 
     def forward(self, inputs, save_mesh=False):
         '''
+        inputs :输入的数据batch
 
         :param inputs: dict: {
             'imgs':                    (Tensor), images,
                                     (batch size, number of views, C, H, W)
+                                    彩色照片
             'vol_origin':              (Tensor), origin of the full voxel volume (xyz position of voxel (0, 0, 0)),
                                     (batch size, 3)
+                                    tsdf体素
             'vol_origin_partial':      (Tensor), origin of the partial voxel volume (xyz position of voxel (0, 0, 0)),
                                     (batch size, 3)
             'world_to_aligned_camera': (Tensor), matrices: transform from world coords to aligned camera coords,
                                     (batch size, number of views, 4, 4)
+                                    变换矩阵
             'proj_matrices':           (Tensor), projection matrix,
                                     (batch size, number of views, number of scales, 4, 4)
+                                    
             when we have ground truth:
             'tsdf_list':               (List), tsdf ground truth for each level,
                                     [(batch size, DIM_X, DIM_Y, DIM_Z)]
