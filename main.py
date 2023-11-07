@@ -136,7 +136,7 @@ if cfg.DISTRIBUTED:   #分布式计算  test
         pin_memory=True,
         drop_last=False
     )
-else:
+else:  #一个gpu 非分布式
     TrainImgLoader = DataLoader(train_dataset, cfg.BATCH_SIZE, shuffle=False, num_workers=cfg.TRAIN.N_WORKERS,
                                 drop_last=True)
     TestImgLoader = DataLoader(test_dataset, cfg.BATCH_SIZE, shuffle=False, num_workers=cfg.TEST.N_WORKERS,
